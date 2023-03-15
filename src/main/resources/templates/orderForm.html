@@ -23,6 +23,9 @@
     <h3>Choose delivery address:</h3>
     <label for="deliveryName">Name: </label>
     <input type="text" th:field="*{deliveryName}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('deliveryName')}"
+          th:errors="*{deliveryName}">delivery name error</span>
     <br>
 
     <label for="deliveryStreet">Street address: </label>
@@ -44,6 +47,9 @@
     <h3>Payment method:</h3>
     <label for="ccNumber">Credit Card: </label>
     <input type="text" th:field="*{ccNumber}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('ccNumber')}"
+          th:errors="*{ccNumber}">CC number error</span>
     <br>
 
     <label for="ccExpiration">Expiration Date: </label>
