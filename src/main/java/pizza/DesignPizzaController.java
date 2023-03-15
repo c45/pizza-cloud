@@ -32,7 +32,7 @@ public class DesignPizzaController {
                 new Ingredient("HAMS", "Ham", Type.MEAT)
         );
 
-        Type[] types = Type.values();
+        Type[] types = Ingredient.Type.values();
         for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(),
                     filterByType(ingredients, type));
@@ -42,6 +42,11 @@ public class DesignPizzaController {
     @ModelAttribute(name = "pizza")
     public Pizza pizza() {
         return new Pizza();
+    }
+
+    @ModelAttribute(name = "pizzaOrder")
+    public PizzaOrder order() {
+        return new PizzaOrder();
     }
 
     @GetMapping

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Pizza Cloud</title>
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+  <form method="post" th:action="@{/orders}" th:object="${pizzaOrder}">
+    <nav>
+      <img class="logo" th:src="@{/images/logo.png}">
+      <a href="#">Complete your order:</a>
+    </nav>
+
+    <h3>Your pizza in this order:</h3>
+    <a th:href="@{/design}" id="another">Design another pizza!</a><br>
+    <ul>
+      <li th:each="pizza : ${pizzaOrder.pizzas}">
+        <span th:text="${pizza.name}">pizza name</span>
+      </li>
+    </ul>
+
+    <h3>Choose delivery address:</h3>
+    <label for="deliveryName">Name: </label>
+    <input type="text" th:field="*{deliveryName}"/>
+    <br>
+
+    <label for="deliveryStreet">Street address: </label>
+    <input type="text" th:field="*{deliveryStreet}"/>
+    <br>
+
+    <label for="deliveryCity">City: </label>
+    <input type="text" th:field="*{deliveryCity}"/>
+    <br>
+
+    <label for="deliveryState">State: </label>
+    <input type="text" th:field="*{deliveryState}"/>
+    <br>
+
+    <label for="deliveryZip">Zip code: </label>
+    <input type="text" th:field="*{deliveryZip}"/>
+    <br>
+
+    <h3>Payment method:</h3>
+    <label for="ccNumber">Credit Card: </label>
+    <input type="text" th:field="*{ccNumber}"/>
+    <br>
+
+    <label for="ccExpiration">Expiration Date: </label>
+    <input type="text" th:field="*{ccExpiration}"/>
+    <br>
+
+    <label for="ccVV">CVV: </label>
+    <input type="text" th:field="*{ccVV}"/>
+    <br>
+
+    <input type="submit" value="Submit Order" class="btn">
+  </form>
+</body>
+<html/>

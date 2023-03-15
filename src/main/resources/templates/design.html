@@ -11,6 +11,8 @@
     <img class="logo" th:src="@{/images/logo.png}">
     <a href="#">Your pizza:</a>
     </nav>
+
+
     <form method="post" th:object="${pizza}">
         <div class="grid">
             <div class="ingredient-group" id="dough">
@@ -57,15 +59,11 @@
                     <span th:text="${ingredient.name}">INGREDIENT</span><br/>
                 </div>
             </div>
+            <label for="name">Name your pizza:<br><input id="name" class="text-input" type="text" th:field="*{name}" placeholder="  Enter text..."/></label>
+        </div>
+            <button class="btn">Submit your order</button>
         </div>
 
-        <div>
-            <h3>Name your pizza:</h3>
-            <input type="text" th:field="*{name}"/>
-            <br/>
-
-            <button>Submit your order</button>
-        </div>
     </form>
 </body>
 </html>
