@@ -1,7 +1,8 @@
-package pizza;
+package pizza.web;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
+import pizza.Ingredient;
 import pizza.Ingredient.Type;
 import java.util.HashMap;
 import java.util.Map;
