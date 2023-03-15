@@ -1,0 +1,33 @@
+body {
+    background-color: #ffffff;
+}
+
+nav {
+    width: 100%;  /* i'm assuming full width */
+    height: 120px; /* change it to desired width */
+    background-color: #464646; /* change to desired color */
+}
+.logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    margin-top: 15px;    /* if you want it vertically middle of the navbar. */
+}
+nav > a {
+    font-size: 2rem;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    height: 80px;        /* if you want it to take the full height of the bar */
+    line-height: 150px;    /* if you want it vertically middle of the navbar */
+    color: #FFFFCC;
+    text-decoration: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #FFFFCC;
+}
