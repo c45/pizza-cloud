@@ -10,9 +10,13 @@ import pizza.Ingredient;
 import pizza.Ingredient.Type;
 import pizza.Pizza;
 import pizza.PizzaOrder;
+import pizza.User;
 import pizza.data.IngredientRepository;
+import pizza.data.PizzaRepository;
+import pizza.data.UserRepository;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,10 +29,14 @@ public class DesignPizzaController {
 
     private final IngredientRepository ingredientRepo;
 
+    private PizzaRepository pizzaRepo;
+    private UserRepository userRepo;
+
     @Autowired
-    public DesignPizzaController(
-            IngredientRepository ingredientRepo) {
+    public DesignPizzaController(IngredientRepository ingredientRepo, PizzaRepository pizzaRepo, UserRepository userRepo) {
         this.ingredientRepo = ingredientRepo;
+        this.pizzaRepo = pizzaRepo;
+        this.userRepo = userRepo;
     }
 
     @ModelAttribute
@@ -48,9 +56,16 @@ public class DesignPizzaController {
         return new Pizza();
     }
 
-    @ModelAttribute(name = "pizzaOrder")
+    @ModelAttribute(name = "order")
     public PizzaOrder order() {
         return new PizzaOrder();
+    }
+
+    @ModelAttribute(name = "user")
+    public User user(Principal principal) {
+        String username = principal.getName();
+        User user = userRepo.findByUsername(username);
+        return user;
     }
 
     @GetMapping
@@ -66,10 +81,8 @@ public class DesignPizzaController {
         if (errors.hasErrors()) {
             return "design";
         }
-
-        pizzaOrder.addPizza(pizza);
-
-        log.info("Processing pizza: {}", pizza);
+        Pizza saved = pizzaRepo.save(pizza);
+        pizzaOrder.addPizza(saved);
 
         return "redirect:/orders/current";
     }

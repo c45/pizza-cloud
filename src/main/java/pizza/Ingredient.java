@@ -6,10 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Data
-@Entity
-@AllArgsConstructor
 @RequiredArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Entity
 public class Ingredient {
 
     @Id

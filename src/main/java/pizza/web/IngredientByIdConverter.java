@@ -20,9 +20,7 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
         this.ingredientRepo = ingredientRepo;
     }
 
-    public IngredientByIdConverter() {
 
-    }
 
     @Override
     public Ingredient convert(String id) {
